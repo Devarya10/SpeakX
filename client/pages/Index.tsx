@@ -206,8 +206,10 @@ export default function Index() {
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
-                  <Globe className="w-4 h-4 text-white" />
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-xl flex items-center justify-center relative overflow-hidden">
+                  <div className="w-3 h-3 bg-white/20 rounded-full absolute top-1 left-1"></div>
+                  <div className="w-2 h-2 bg-white rounded-sm rotate-45"></div>
+                  <div className="w-1.5 h-1.5 bg-white/60 rounded-full absolute bottom-1 right-1"></div>
                 </div>
                 <span className="font-semibold text-sm text-gray-900">LiveTranslate</span>
                 {isMobile && (
