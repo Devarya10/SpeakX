@@ -209,7 +209,7 @@ export default function Index() {
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
                   <Globe className="w-4 h-4 text-white" />
                 </div>
-                <span className="font-semibold text-sm text-gray-900">TweetTranslate</span>
+                <span className="font-semibold text-sm text-gray-900">LiveTranslate</span>
                 {isMobile && (
                   <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-700">
                     Mobile
