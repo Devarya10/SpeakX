@@ -5,15 +5,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Globe, 
   Copy, 
   Check, 
   Minimize2, 
-  Maximize2, 
   Move, 
-  X,
   ArrowRightLeft,
-  Settings,
   ChevronDown,
   ChevronUp
 } from "lucide-react";
@@ -21,7 +17,7 @@ import {
 const languages = [
   { code: "en", name: "English", flag: "🇺🇸" },
   { code: "es", name: "Spanish", flag: "🇪🇸" },
-  { code: "fr", name: "French", flag: "🇫🇷" },
+  { code: "fr", name: "French", flag: "����🇷" },
   { code: "de", name: "German", flag: "🇩🇪" },
   { code: "it", name: "Italian", flag: "🇮🇹" },
   { code: "pt", name: "Portuguese", flag: "🇵🇹" },
@@ -152,13 +148,13 @@ export default function Index() {
         onMouseDown={handleMouseDown}
         onTouchStart={handleMouseDown}
       >
-        <Card className="w-16 h-16 bg-white/95 backdrop-blur-md shadow-2xl border border-blue-200 hover:shadow-3xl transition-all duration-200">
+        <Card className="w-16 h-16 bg-slate-900/95 backdrop-blur-xl border-slate-700/50 hover:bg-slate-800/95 transition-all duration-300 shadow-2xl shadow-black/20">
           <CardContent className="p-0 h-full flex items-center justify-center">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsMinimized(false)}
-              className="w-full h-full rounded-lg bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 hover:from-blue-600 hover:via-purple-600 hover:to-indigo-700 relative overflow-hidden"
+              className="w-full h-full rounded-lg bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-700 hover:from-violet-600 hover:via-purple-700 hover:to-indigo-800 relative overflow-hidden border-0"
             >
               <div className="w-2 h-2 bg-white/30 rounded-full absolute top-1.5 left-1.5"></div>
               <div className="w-1.5 h-1.5 bg-white rounded-sm rotate-45"></div>
@@ -171,23 +167,23 @@ export default function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100/50 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 p-4">
       {/* Demo Twitter-like Background */}
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-sm p-6 mb-4">
+      <div className="max-w-2xl mx-auto bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 rounded-2xl shadow-xl p-6 mb-4">
         <div className="flex items-center space-x-3 mb-4">
-          <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full ring-2 ring-blue-400/20"></div>
           <div>
-            <div className="font-semibold">Twitter User</div>
-            <div className="text-gray-500 text-sm">@twitteruser</div>
+            <div className="font-semibold text-white">Twitter User</div>
+            <div className="text-slate-400 text-sm">@twitteruser</div>
           </div>
         </div>
-        <p className="text-gray-800 mb-4">
+        <p className="text-slate-200 mb-4 leading-relaxed">
           This is a sample tweet that you might want to translate. The translation widget floats on top and can be moved around the screen.
         </p>
-        <div className="flex space-x-4 text-gray-500 text-sm">
-          <span>Reply</span>
-          <span>Retweet</span>
-          <span>Like</span>
+        <div className="flex space-x-6 text-slate-400 text-sm">
+          <span className="hover:text-slate-300 cursor-pointer transition-colors">Reply</span>
+          <span className="hover:text-slate-300 cursor-pointer transition-colors">Retweet</span>
+          <span className="hover:text-slate-300 cursor-pointer transition-colors">Like</span>
         </div>
       </div>
 
@@ -200,113 +196,126 @@ export default function Index() {
           top: isMobile ? 'auto' : position.y,
           bottom: isMobile ? 10 : 'auto',
           right: isMobile ? 10 : 'auto',
-          width: isMobile ? 'calc(100vw - 20px)' : '320px'
+          width: isMobile ? 'calc(100vw - 20px)' : '340px'
         }}
       >
-        <Card className={`${isMobile ? 'w-full' : 'w-80'} bg-white/95 backdrop-blur-md border border-blue-200 shadow-2xl`}>
+        <Card className={`${isMobile ? 'w-full' : 'w-85'} bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-black/25 transition-all duration-300`}>
           {/* Header */}
-          <CardHeader className="pb-2">
+          <CardHeader className="pb-3 border-b border-slate-700/50">
             <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-xl flex items-center justify-center relative overflow-hidden">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-700 rounded-2xl flex items-center justify-center relative overflow-hidden ring-2 ring-purple-400/20">
                   <div className="w-3 h-3 bg-white/20 rounded-full absolute top-1 left-1"></div>
                   <div className="w-2 h-2 bg-white rounded-sm rotate-45"></div>
                   <div className="w-1.5 h-1.5 bg-white/60 rounded-full absolute bottom-1 right-1"></div>
                 </div>
-                <span className="font-semibold text-sm text-gray-900">LiveTranslate</span>
-                {isMobile && (
-                  <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-700">
-                    Mobile
-                  </Badge>
-                )}
+                <div>
+                  <span className="font-bold text-lg text-white tracking-tight">LiveTranslate</span>
+                  {isMobile && (
+                    <Badge variant="secondary" className="ml-2 text-xs bg-violet-500/20 text-violet-300 border-violet-400/30">
+                      Mobile
+                    </Badge>
+                  )}
+                </div>
               </div>
               <div className="flex items-center space-x-1">
                 {!isMobile && (
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="w-6 h-6 p-0 cursor-move touch-manipulation"
+                    className="w-8 h-8 p-0 cursor-move touch-manipulation text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all"
                     onMouseDown={handleMouseDown}
                     onTouchStart={handleMouseDown}
                   >
-                    <Move className="w-3 h-3" />
+                    <Move className="w-4 h-4" />
                   </Button>
                 )}
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="w-6 h-6 p-0"
+                  className="w-8 h-8 p-0 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all"
                   onClick={() => setIsExpanded(!isExpanded)}
                 >
-                  {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                  {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="w-6 h-6 p-0"
+                  className="w-8 h-8 p-0 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all"
                   onClick={() => setIsMinimized(true)}
                 >
-                  <Minimize2 className="w-3 h-3" />
+                  <Minimize2 className="w-4 h-4" />
                 </Button>
               </div>
             </div>
           </CardHeader>
 
           {isExpanded && (
-            <CardContent className="pt-0 space-y-3">
+            <CardContent className="pt-4 space-y-4">
               {/* Language Selection */}
-              <div className={`flex ${isMobile ? 'flex-col space-y-2' : 'space-x-2'}`}>
-                <Select value={fromLang} onValueChange={setFromLang}>
-                  <SelectTrigger className={`${isMobile ? 'w-full' : 'flex-1'} h-8 text-xs`}>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="auto">🌐 Auto</SelectItem>
-                    {languages.map((lang) => (
-                      <SelectItem key={lang.code} value={lang.code}>
-                        {lang.flag} {lang.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+              <div className={`flex ${isMobile ? 'flex-col space-y-3' : 'space-x-3'}`}>
+                <div className="flex-1">
+                  <label className="text-xs font-medium text-slate-400 mb-1 block">From</label>
+                  <Select value={fromLang} onValueChange={setFromLang}>
+                    <SelectTrigger className="h-9 bg-slate-800/50 border-slate-600/50 text-white hover:bg-slate-700/50 focus:ring-violet-500/30 focus:border-violet-400 transition-all">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="bg-slate-800 border-slate-600">
+                      <SelectItem value="auto" className="text-slate-200 focus:bg-slate-700 focus:text-white">🌐 Auto Detect</SelectItem>
+                      {languages.map((lang) => (
+                        <SelectItem key={lang.code} value={lang.code} className="text-slate-200 focus:bg-slate-700 focus:text-white">
+                          {lang.flag} {lang.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
                 
-                {!isMobile && <ArrowRightLeft className="w-4 h-4 text-gray-400 self-center" />}
+                {!isMobile && (
+                  <div className="flex items-end pb-2">
+                    <ArrowRightLeft className="w-5 h-5 text-violet-400" />
+                  </div>
+                )}
                 {isMobile && (
                   <div className="flex justify-center">
-                    <ArrowRightLeft className="w-4 h-4 text-gray-400 rotate-90" />
+                    <ArrowRightLeft className="w-5 h-5 text-violet-400 rotate-90" />
                   </div>
                 )}
                 
-                <Select value={toLang} onValueChange={setToLang}>
-                  <SelectTrigger className={`${isMobile ? 'w-full' : 'flex-1'} h-8 text-xs`}>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {languages.map((lang) => (
-                      <SelectItem key={lang.code} value={lang.code}>
-                        {lang.flag} {lang.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <div className="flex-1">
+                  <label className="text-xs font-medium text-slate-400 mb-1 block">To</label>
+                  <Select value={toLang} onValueChange={setToLang}>
+                    <SelectTrigger className="h-9 bg-slate-800/50 border-slate-600/50 text-white hover:bg-slate-700/50 focus:ring-violet-500/30 focus:border-violet-400 transition-all">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="bg-slate-800 border-slate-600">
+                      {languages.map((lang) => (
+                        <SelectItem key={lang.code} value={lang.code} className="text-slate-200 focus:bg-slate-700 focus:text-white">
+                          {lang.flag} {lang.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
 
               {/* Input Area */}
-              <div className="space-y-2">
+              <div className="space-y-3">
+                <label className="text-xs font-medium text-slate-400">Original Text</label>
                 <Textarea
-                  placeholder="Paste tweet or type to translate..."
-                  className={`${isMobile ? 'min-h-[60px]' : 'min-h-[80px]'} text-sm resize-none border-gray-200 focus:ring-1 focus:ring-blue-500`}
+                  placeholder="Paste tweet or type something to translate..."
+                  className={`${isMobile ? 'min-h-[70px]' : 'min-h-[90px]'} bg-slate-800/50 border-slate-600/50 text-white placeholder-slate-500 resize-none focus:ring-violet-500/30 focus:border-violet-400 transition-all`}
                   value={sourceText}
                   onChange={(e) => setSourceText(e.target.value)}
                 />
                 
                 <div className="flex items-center justify-between">
-                  <span className={`text-xs ${isOverLimit ? 'text-red-500' : 'text-gray-500'}`}>
+                  <span className={`text-xs font-medium ${isOverLimit ? 'text-red-400' : 'text-slate-500'}`}>
                     {charCount}/280
                   </span>
                   {isOverLimit && (
-                    <Badge variant="destructive" className="text-xs h-5">
-                      Too long
+                    <Badge variant="destructive" className="text-xs h-6 bg-red-500/20 text-red-400 border-red-400/30">
+                      Too long for Twitter
                     </Badge>
                   )}
                 </div>
@@ -316,41 +325,42 @@ export default function Index() {
               <Button 
                 onClick={handleTranslate}
                 disabled={!sourceText.trim() || isTranslating}
-                className="w-full h-8 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-xs"
+                className="w-full h-10 bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-700 hover:via-purple-700 hover:to-indigo-700 text-white font-medium shadow-lg shadow-violet-500/25 transition-all duration-200 border-0"
               >
                 {isTranslating ? (
                   <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 border border-white border-t-transparent rounded-full animate-spin" />
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     <span>Translating...</span>
                   </div>
                 ) : (
-                  "Translate"
+                  "Translate Now"
                 )}
               </Button>
 
               {/* Output Area */}
               {translatedText && (
-                <div className="space-y-2">
-                  <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-                    <p className="text-sm text-gray-900 whitespace-pre-wrap">
+                <div className="space-y-3">
+                  <label className="text-xs font-medium text-slate-400">Translation</label>
+                  <div className="p-4 bg-gradient-to-br from-violet-500/10 to-indigo-500/10 rounded-xl border border-violet-400/20">
+                    <p className="text-white whitespace-pre-wrap leading-relaxed">
                       {translatedText}
                     </p>
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <Badge variant="secondary" className="bg-green-100 text-green-700 text-xs h-5">
-                      Ready
+                    <Badge variant="secondary" className="bg-emerald-500/20 text-emerald-300 border-emerald-400/30 text-xs h-6">
+                      ✓ Ready to copy
                     </Badge>
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={handleCopy}
-                      className="h-6 text-xs px-2"
+                      className="h-8 text-xs px-3 bg-slate-800/50 border-slate-600/50 text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all"
                     >
                       {copied ? (
                         <>
                           <Check className="w-3 h-3 mr-1" />
-                          Copied
+                          Copied!
                         </>
                       ) : (
                         <>
@@ -368,14 +378,29 @@ export default function Index() {
       </div>
 
       {/* Instructions */}
-      <div className="max-w-2xl mx-auto bg-blue-50 rounded-lg p-4 mt-4">
-        <h3 className="font-semibold text-blue-900 mb-2">How to use LiveTranslate:</h3>
-        <ul className="text-blue-800 text-sm space-y-1">
-          <li>• {isMobile ? 'Widget automatically positions at bottom on mobile' : 'Drag the floating widget anywhere on screen using the move icon'}</li>
-          <li>• Collapse/expand the widget using the chevron button</li>
-          <li>• Minimize to a small icon when not in use</li>
-          <li>• Copy tweets from Twitter and paste them for instant translation</li>
-          <li>• Perfect for browsing Twitter in foreign languages!</li>
+      <div className="max-w-2xl mx-auto bg-gradient-to-br from-violet-500/10 to-indigo-500/10 backdrop-blur-sm border border-violet-400/20 rounded-2xl p-6 mt-4">
+        <h3 className="font-bold text-xl text-white mb-3">How to use LiveTranslate:</h3>
+        <ul className="text-slate-300 space-y-2">
+          <li className="flex items-start space-x-2">
+            <span className="text-violet-400 font-bold">•</span>
+            <span>{isMobile ? 'Widget automatically positions at bottom on mobile' : 'Drag the floating widget anywhere on screen using the move icon'}</span>
+          </li>
+          <li className="flex items-start space-x-2">
+            <span className="text-violet-400 font-bold">•</span>
+            <span>Collapse/expand the widget using the chevron button</span>
+          </li>
+          <li className="flex items-start space-x-2">
+            <span className="text-violet-400 font-bold">•</span>
+            <span>Minimize to a small icon when not in use</span>
+          </li>
+          <li className="flex items-start space-x-2">
+            <span className="text-violet-400 font-bold">•</span>
+            <span>Copy tweets from Twitter and paste them for instant translation</span>
+          </li>
+          <li className="flex items-start space-x-2">
+            <span className="text-violet-400 font-bold">•</span>
+            <span>Perfect for browsing Twitter in foreign languages!</span>
+          </li>
         </ul>
       </div>
     </div>
