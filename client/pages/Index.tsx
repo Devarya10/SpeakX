@@ -201,7 +201,11 @@ export default function Index() {
       >
         <Card className={`${isMobile ? 'w-full' : 'w-85'} bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-black/25 transition-all duration-300`}>
           {/* Header */}
-          <CardHeader className="pb-3 border-b border-slate-700/50">
+          <CardHeader
+            className="pb-3 border-b border-slate-700/50 cursor-move touch-manipulation"
+            onMouseDown={!isMobile ? handleHeaderMouseDown : undefined}
+            onTouchStart={!isMobile ? handleHeaderMouseDown : undefined}
+          >
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-700 rounded-2xl flex items-center justify-center relative overflow-hidden ring-2 ring-purple-400/20">
@@ -216,20 +220,12 @@ export default function Index() {
                       Mobile
                     </Badge>
                   )}
+                  {!isMobile && (
+                    <div className="text-xs text-slate-400 mt-0.5">Drag from here to move</div>
+                  )}
                 </div>
               </div>
               <div className="flex items-center space-x-1">
-                {!isMobile && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-8 h-8 p-0 cursor-move touch-manipulation text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all"
-                    onMouseDown={handleMouseDown}
-                    onTouchStart={handleMouseDown}
-                  >
-                    <Move className="w-4 h-4" />
-                  </Button>
-                )}
                 <Button
                   variant="ghost"
                   size="sm"
