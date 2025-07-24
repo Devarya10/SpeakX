@@ -76,13 +76,13 @@ export default function Index() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleHeaderMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault();
     if (widgetRef.current) {
       const rect = widgetRef.current.getBoundingClientRect();
       const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
       const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-      
+
       setDragOffset({
         x: clientX - rect.left,
         y: clientY - rect.top
