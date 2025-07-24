@@ -365,7 +365,7 @@ export default function Index() {
 
       {/* Instructions */}
       <div className="max-w-2xl mx-auto bg-blue-50 rounded-lg p-4 mt-4">
-        <h3 className="font-semibold text-blue-900 mb-2">How to use TweetTranslate:</h3>
+        <h3 className="font-semibold text-blue-900 mb-2">How to use LiveTranslate:</h3>
         <ul className="text-blue-800 text-sm space-y-1">
           <li>• {isMobile ? 'Widget automatically positions at bottom on mobile' : 'Drag the floating widget anywhere on screen using the move icon'}</li>
           <li>• Collapse/expand the widget using the chevron button</li>
