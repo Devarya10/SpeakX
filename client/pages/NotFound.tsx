@@ -21,7 +21,7 @@ export default function NotFound() {
         <Link to="/">
           <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to TweetTranslate
+            Back to LiveTranslate
           </Button>
         </Link>
       </div>
