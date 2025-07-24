@@ -202,7 +202,7 @@ export default function Index() {
         <Card className={`${isMobile ? 'w-full' : 'w-85'} bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-black/25 transition-all duration-300`}>
           {/* Header */}
           <CardHeader
-            className="pb-3 border-b border-slate-700/50 cursor-move touch-manipulation"
+            className="pb-3 border-b border-slate-700/50 touch-manipulation"
             onMouseDown={!isMobile ? handleHeaderMouseDown : undefined}
             onTouchStart={!isMobile ? handleHeaderMouseDown : undefined}
           >
