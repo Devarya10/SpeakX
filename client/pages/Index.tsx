@@ -158,9 +158,11 @@ export default function Index() {
               variant="ghost"
               size="sm"
               onClick={() => setIsMinimized(false)}
-              className="w-full h-full rounded-lg"
+              className="w-full h-full rounded-lg bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 hover:from-blue-600 hover:via-purple-600 hover:to-indigo-700 relative overflow-hidden"
             >
-              <Globe className="w-6 h-6 text-blue-600" />
+              <div className="w-2 h-2 bg-white/30 rounded-full absolute top-1.5 left-1.5"></div>
+              <div className="w-1.5 h-1.5 bg-white rounded-sm rotate-45"></div>
+              <div className="w-1 h-1 bg-white/70 rounded-full absolute bottom-1.5 right-1.5"></div>
             </Button>
           </CardContent>
         </Card>
