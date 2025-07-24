@@ -89,7 +89,7 @@ export default function Index() {
   };
 
   // Add event listeners for dragging
-  React.useEffect(() => {
+  useEffect(() => {
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
