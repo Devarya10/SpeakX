@@ -1,17 +1,23 @@
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Copy, 
-  Check, 
-  Minimize2, 
-  Move, 
+import {
+  Copy,
+  Check,
+  Minimize2,
+  Move,
   ArrowRightLeft,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
 } from "lucide-react";
 
 const languages = [
@@ -26,7 +32,7 @@ const languages = [
   { code: "ko", name: "Korean", flag: "🇰🇷" },
   { code: "zh", name: "Chinese", flag: "🇨🇳" },
   { code: "ar", name: "Arabic", flag: "🇸🇦" },
-  { code: "hi", name: "Hindi", flag: "🇮🇳" }
+  { code: "hi", name: "Hindi", flag: "🇮🇳" },
 ];
 
 export default function Index() {
@@ -53,15 +59,15 @@ export default function Index() {
         setPosition({ x: 10, y: window.innerHeight - 400 });
       }
     };
-    
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const handleTranslate = async () => {
     if (!sourceText.trim()) return;
-    
+
     setIsTranslating(true);
     // Simulate translation API call
     setTimeout(() => {
@@ -80,12 +86,12 @@ export default function Index() {
     e.preventDefault();
     if (widgetRef.current) {
       const rect = widgetRef.current.getBoundingClientRect();
-      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+      const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
 
       setDragOffset({
         x: clientX - rect.left,
-        y: clientY - rect.top
+        y: clientY - rect.top,
       });
       setIsDragging(true);
     }
@@ -93,16 +99,17 @@ export default function Index() {
 
   const handleMouseMove = (e: MouseEvent | TouchEvent) => {
     if (isDragging) {
-      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-      
+      const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+      const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
+
       // Constrain to viewport bounds
-      const maxX = window.innerWidth - (isMobile ? window.innerWidth - 20 : 320);
+      const maxX =
+        window.innerWidth - (isMobile ? window.innerWidth - 20 : 320);
       const maxY = window.innerHeight - 200;
-      
+
       setPosition({
         x: Math.max(10, Math.min(maxX, clientX - dragOffset.x)),
-        y: Math.max(10, Math.min(maxY, clientY - dragOffset.y))
+        y: Math.max(10, Math.min(maxY, clientY - dragOffset.y)),
       });
     }
   };
@@ -114,19 +121,20 @@ export default function Index() {
   // Add event listeners for dragging
   useEffect(() => {
     if (isDragging) {
-      const handleMove = (e: Event) => handleMouseMove(e as MouseEvent | TouchEvent);
+      const handleMove = (e: Event) =>
+        handleMouseMove(e as MouseEvent | TouchEvent);
       const handleEnd = () => handleMouseUp();
-      
-      document.addEventListener('mousemove', handleMove);
-      document.addEventListener('mouseup', handleEnd);
-      document.addEventListener('touchmove', handleMove);
-      document.addEventListener('touchend', handleEnd);
-      
+
+      document.addEventListener("mousemove", handleMove);
+      document.addEventListener("mouseup", handleEnd);
+      document.addEventListener("touchmove", handleMove);
+      document.addEventListener("touchend", handleEnd);
+
       return () => {
-        document.removeEventListener('mousemove', handleMove);
-        document.removeEventListener('mouseup', handleEnd);
-        document.removeEventListener('touchmove', handleMove);
-        document.removeEventListener('touchend', handleEnd);
+        document.removeEventListener("mousemove", handleMove);
+        document.removeEventListener("mouseup", handleEnd);
+        document.removeEventListener("touchmove", handleMove);
+        document.removeEventListener("touchend", handleEnd);
       };
     }
   }, [isDragging, dragOffset]);
@@ -136,14 +144,14 @@ export default function Index() {
 
   if (isMinimized) {
     return (
-      <div 
+      <div
         ref={widgetRef}
         className="fixed z-[9999] cursor-move touch-manipulation"
-        style={{ 
-          left: isMobile ? 'auto' : position.x, 
-          right: isMobile ? 10 : 'auto',
-          top: isMobile ? 'auto' : position.y,
-          bottom: isMobile ? 10 : 'auto'
+        style={{
+          left: isMobile ? "auto" : position.x,
+          right: isMobile ? 10 : "auto",
+          top: isMobile ? "auto" : position.y,
+          bottom: isMobile ? 10 : "auto",
         }}
         onMouseDown={handleHeaderMouseDown}
         onTouchStart={handleHeaderMouseDown}
@@ -178,28 +186,37 @@ export default function Index() {
           </div>
         </div>
         <p className="text-slate-200 mb-4 leading-relaxed">
-          This is a sample tweet that you might want to translate. The translation widget floats on top and can be moved around the screen.
+          This is a sample tweet that you might want to translate. The
+          translation widget floats on top and can be moved around the screen.
         </p>
         <div className="flex space-x-6 text-slate-400 text-sm">
-          <span className="hover:text-slate-300 cursor-pointer transition-colors">Reply</span>
-          <span className="hover:text-slate-300 cursor-pointer transition-colors">Retweet</span>
-          <span className="hover:text-slate-300 cursor-pointer transition-colors">Like</span>
+          <span className="hover:text-slate-300 cursor-pointer transition-colors">
+            Reply
+          </span>
+          <span className="hover:text-slate-300 cursor-pointer transition-colors">
+            Retweet
+          </span>
+          <span className="hover:text-slate-300 cursor-pointer transition-colors">
+            Like
+          </span>
         </div>
       </div>
 
       {/* Floating Translation Widget */}
-      <div 
+      <div
         ref={widgetRef}
         className="fixed z-[9999] shadow-2xl touch-manipulation"
-        style={{ 
-          left: isMobile ? 10 : position.x, 
-          top: isMobile ? 'auto' : position.y,
-          bottom: isMobile ? 10 : 'auto',
-          right: isMobile ? 10 : 'auto',
-          width: isMobile ? 'calc(100vw - 20px)' : '340px'
+        style={{
+          left: isMobile ? 10 : position.x,
+          top: isMobile ? "auto" : position.y,
+          bottom: isMobile ? 10 : "auto",
+          right: isMobile ? 10 : "auto",
+          width: isMobile ? "calc(100vw - 20px)" : "340px",
         }}
       >
-        <Card className={`${isMobile ? 'w-full' : 'w-85'} bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-black/25 transition-all duration-300`}>
+        <Card
+          className={`${isMobile ? "w-full" : "w-85"} bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-black/25 transition-all duration-300`}
+        >
           {/* Header */}
           <CardHeader
             className="pb-3 border-b border-slate-700/50 touch-manipulation"
@@ -214,14 +231,21 @@ export default function Index() {
                   <div className="w-1.5 h-1.5 bg-white/60 rounded-full absolute bottom-1 right-1"></div>
                 </div>
                 <div>
-                  <span className="font-bold text-lg text-white tracking-tight">LiveTranslate</span>
+                  <span className="font-bold text-lg text-white tracking-tight">
+                    LiveTranslate
+                  </span>
                   {isMobile && (
-                    <Badge variant="secondary" className="ml-2 text-xs bg-violet-500/20 text-violet-300 border-violet-400/30">
+                    <Badge
+                      variant="secondary"
+                      className="ml-2 text-xs bg-violet-500/20 text-violet-300 border-violet-400/30"
+                    >
                       Mobile
                     </Badge>
                   )}
                   {!isMobile && (
-                    <div className="text-xs text-slate-400 mt-0.5">Drag from here to move</div>
+                    <div className="text-xs text-slate-400 mt-0.5">
+                      Drag from here to move
+                    </div>
                   )}
                 </div>
               </div>
@@ -232,7 +256,11 @@ export default function Index() {
                   className="w-8 h-8 p-0 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all"
                   onClick={() => setIsExpanded(!isExpanded)}
                 >
-                  {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  {isExpanded ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
                 </Button>
                 <Button
                   variant="ghost"
@@ -249,24 +277,37 @@ export default function Index() {
           {isExpanded && (
             <CardContent className="pt-4 space-y-4">
               {/* Language Selection */}
-              <div className={`flex ${isMobile ? 'flex-col space-y-3' : 'space-x-3'}`}>
+              <div
+                className={`flex ${isMobile ? "flex-col space-y-3" : "space-x-3"}`}
+              >
                 <div className="flex-1">
-                  <label className="text-xs font-medium text-slate-400 mb-1 block">From</label>
+                  <label className="text-xs font-medium text-slate-400 mb-1 block">
+                    From
+                  </label>
                   <Select value={fromLang} onValueChange={setFromLang}>
                     <SelectTrigger className="h-9 bg-slate-800/50 border-slate-600/50 text-white hover:bg-slate-700/50 focus:ring-violet-500/30 focus:border-violet-400 transition-all">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-600">
-                      <SelectItem value="auto" className="text-slate-200 focus:bg-slate-700 focus:text-white">🌐 Auto Detect</SelectItem>
+                      <SelectItem
+                        value="auto"
+                        className="text-slate-200 focus:bg-slate-700 focus:text-white"
+                      >
+                        🌐 Auto Detect
+                      </SelectItem>
                       {languages.map((lang) => (
-                        <SelectItem key={lang.code} value={lang.code} className="text-slate-200 focus:bg-slate-700 focus:text-white">
+                        <SelectItem
+                          key={lang.code}
+                          value={lang.code}
+                          className="text-slate-200 focus:bg-slate-700 focus:text-white"
+                        >
                           {lang.flag} {lang.name}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 {!isMobile && (
                   <div className="flex items-end pb-2">
                     <ArrowRightLeft className="w-5 h-5 text-violet-400" />
@@ -277,16 +318,22 @@ export default function Index() {
                     <ArrowRightLeft className="w-5 h-5 text-violet-400 rotate-90" />
                   </div>
                 )}
-                
+
                 <div className="flex-1">
-                  <label className="text-xs font-medium text-slate-400 mb-1 block">To</label>
+                  <label className="text-xs font-medium text-slate-400 mb-1 block">
+                    To
+                  </label>
                   <Select value={toLang} onValueChange={setToLang}>
                     <SelectTrigger className="h-9 bg-slate-800/50 border-slate-600/50 text-white hover:bg-slate-700/50 focus:ring-violet-500/30 focus:border-violet-400 transition-all">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-800 border-slate-600">
                       {languages.map((lang) => (
-                        <SelectItem key={lang.code} value={lang.code} className="text-slate-200 focus:bg-slate-700 focus:text-white">
+                        <SelectItem
+                          key={lang.code}
+                          value={lang.code}
+                          className="text-slate-200 focus:bg-slate-700 focus:text-white"
+                        >
                           {lang.flag} {lang.name}
                         </SelectItem>
                       ))}
@@ -297,20 +344,27 @@ export default function Index() {
 
               {/* Input Area */}
               <div className="space-y-3">
-                <label className="text-xs font-medium text-slate-400">Original Text</label>
+                <label className="text-xs font-medium text-slate-400">
+                  Original Text
+                </label>
                 <Textarea
                   placeholder="Paste tweet or type something to translate..."
-                  className={`${isMobile ? 'min-h-[70px]' : 'min-h-[90px]'} bg-slate-800/50 border-slate-600/50 text-white placeholder-slate-500 resize-none focus:ring-violet-500/30 focus:border-violet-400 transition-all`}
+                  className={`${isMobile ? "min-h-[70px]" : "min-h-[90px]"} bg-slate-800/50 border-slate-600/50 text-white placeholder-slate-500 resize-none focus:ring-violet-500/30 focus:border-violet-400 transition-all`}
                   value={sourceText}
                   onChange={(e) => setSourceText(e.target.value)}
                 />
-                
+
                 <div className="flex items-center justify-between">
-                  <span className={`text-xs font-medium ${isOverLimit ? 'text-red-400' : 'text-slate-500'}`}>
+                  <span
+                    className={`text-xs font-medium ${isOverLimit ? "text-red-400" : "text-slate-500"}`}
+                  >
                     {charCount}/280
                   </span>
                   {isOverLimit && (
-                    <Badge variant="destructive" className="text-xs h-6 bg-red-500/20 text-red-400 border-red-400/30">
+                    <Badge
+                      variant="destructive"
+                      className="text-xs h-6 bg-red-500/20 text-red-400 border-red-400/30"
+                    >
                       Too long for Twitter
                     </Badge>
                   )}
@@ -318,7 +372,7 @@ export default function Index() {
               </div>
 
               {/* Translate Button */}
-              <Button 
+              <Button
                 onClick={handleTranslate}
                 disabled={!sourceText.trim() || isTranslating}
                 className="w-full h-10 bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-700 hover:via-purple-700 hover:to-indigo-700 text-white font-medium shadow-lg shadow-violet-500/25 transition-all duration-200 border-0"
@@ -336,15 +390,20 @@ export default function Index() {
               {/* Output Area */}
               {translatedText && (
                 <div className="space-y-3">
-                  <label className="text-xs font-medium text-slate-400">Translation</label>
+                  <label className="text-xs font-medium text-slate-400">
+                    Translation
+                  </label>
                   <div className="p-4 bg-gradient-to-br from-violet-500/10 to-indigo-500/10 rounded-xl border border-violet-400/20">
                     <p className="text-white whitespace-pre-wrap leading-relaxed">
                       {translatedText}
                     </p>
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
-                    <Badge variant="secondary" className="bg-emerald-500/20 text-emerald-300 border-emerald-400/30 text-xs h-6">
+                    <Badge
+                      variant="secondary"
+                      className="bg-emerald-500/20 text-emerald-300 border-emerald-400/30 text-xs h-6"
+                    >
                       ✓ Ready to copy
                     </Badge>
                     <Button
@@ -375,11 +434,17 @@ export default function Index() {
 
       {/* Instructions */}
       <div className="max-w-2xl mx-auto bg-gradient-to-br from-violet-500/10 to-indigo-500/10 backdrop-blur-sm border border-violet-400/20 rounded-2xl p-6 mt-4">
-        <h3 className="font-bold text-xl text-white mb-3">How to use LiveTranslate:</h3>
+        <h3 className="font-bold text-xl text-white mb-3">
+          How to use LiveTranslate:
+        </h3>
         <ul className="text-slate-300 space-y-2">
           <li className="flex items-start space-x-2">
             <span className="text-violet-400 font-bold">•</span>
-            <span>{isMobile ? 'Widget automatically positions at bottom on mobile' : 'Drag the floating widget anywhere on screen using the move icon'}</span>
+            <span>
+              {isMobile
+                ? "Widget automatically positions at bottom on mobile"
+                : "Drag the floating widget anywhere on screen using the move icon"}
+            </span>
           </li>
           <li className="flex items-start space-x-2">
             <span className="text-violet-400 font-bold">•</span>
@@ -391,7 +456,9 @@ export default function Index() {
           </li>
           <li className="flex items-start space-x-2">
             <span className="text-violet-400 font-bold">•</span>
-            <span>Copy tweets from Twitter and paste them for instant translation</span>
+            <span>
+              Copy tweets from Twitter and paste them for instant translation
+            </span>
           </li>
           <li className="flex items-start space-x-2">
             <span className="text-violet-400 font-bold">•</span>
