@@ -145,8 +145,8 @@ export default function Index() {
           top: isMobile ? 'auto' : position.y,
           bottom: isMobile ? 10 : 'auto'
         }}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleMouseDown}
+        onMouseDown={handleHeaderMouseDown}
+        onTouchStart={handleHeaderMouseDown}
       >
         <Card className="w-16 h-16 bg-slate-900/95 backdrop-blur-xl border-slate-700/50 hover:bg-slate-800/95 transition-all duration-300 shadow-2xl shadow-black/20">
           <CardContent className="p-0 h-full flex items-center justify-center">
