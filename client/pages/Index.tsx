@@ -30,9 +30,12 @@ const languages = [
   { code: "ru", name: "Russian", flag: "🇷🇺" },
   { code: "ja", name: "Japanese", flag: "🇯🇵" },
   { code: "ko", name: "Korean", flag: "🇰🇷" },
-  { code: "zh", name: "Chinese", flag: "🇨🇳" },
+  { code: "zh", name: "Chinese (Simplified)", flag: "🇨🇳" },
   { code: "ar", name: "Arabic", flag: "🇸🇦" },
   { code: "hi", name: "Hindi", flag: "🇮🇳" },
+  { code: "nl", name: "Dutch", flag: "🇳🇱" },
+  { code: "tr", name: "Turkish", flag: "🇹🇷" },
+  { code: "pl", name: "Polish", flag: "🇵🇱" },
 ];
 
 export default function Index() {
