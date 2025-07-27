@@ -33,7 +33,7 @@ const languages = [
   { code: "ko", name: "Korean", flag: "🇰🇷" },
   { code: "zh", name: "Chinese (Simplified)", flag: "🇨🇳" },
   { code: "ar", name: "Arabic", flag: "🇸🇦" },
-  { code: "hi", name: "Hindi", flag: "🇮��" },
+  { code: "hi", name: "Hindi", flag: "🇮🇳" },
   { code: "nl", name: "Dutch", flag: "🇳🇱" },
   { code: "tr", name: "Turkish", flag: "🇹🇷" },
   { code: "pl", name: "Polish", flag: "🇵🇱" },
@@ -52,6 +52,7 @@ export default function Index() {
   const [position, setPosition] = useState({ x: 20, y: 20 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [isWidgetVisible, setIsWidgetVisible] = useState(true);
   const widgetRef = useRef<HTMLDivElement>(null);
 
   // Check if mobile
