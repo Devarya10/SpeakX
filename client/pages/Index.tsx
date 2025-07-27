@@ -75,41 +75,45 @@ export default function Index() {
 
     try {
       // Use LibreTranslate API for free translation
-      const response = await fetch('https://libretranslate.com/translate', {
-        method: 'POST',
+      const response = await fetch("https://libretranslate.com/translate", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           q: sourceText,
-          source: fromLang === 'auto' ? 'auto' : fromLang,
+          source: fromLang === "auto" ? "auto" : fromLang,
           target: toLang,
-          format: 'text'
-        })
+          format: "text",
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Translation failed');
+        throw new Error("Translation failed");
       }
 
       const data = await response.json();
-      setTranslatedText(data.translatedText || data.translation || 'Translation failed');
-
+      setTranslatedText(
+        data.translatedText || data.translation || "Translation failed",
+      );
     } catch (error) {
-      console.error('Translation error:', error);
+      console.error("Translation error:", error);
       // Fallback to Google Translate Web API
       try {
         const fallbackResponse = await fetch(
-          `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${fromLang === 'auto' ? 'auto' : fromLang}&tl=${toLang}&dt=t&q=${encodeURIComponent(sourceText)}`
+          `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${fromLang === "auto" ? "auto" : fromLang}&tl=${toLang}&dt=t&q=${encodeURIComponent(sourceText)}`,
         );
 
         const fallbackData = await fallbackResponse.json();
-        const translated = fallbackData[0]?.map((item: any) => item[0]).join('') || 'Translation failed';
+        const translated =
+          fallbackData[0]?.map((item: any) => item[0]).join("") ||
+          "Translation failed";
         setTranslatedText(translated);
-
       } catch (fallbackError) {
-        console.error('Fallback translation error:', fallbackError);
-        setTranslatedText('Translation service temporarily unavailable. Please try again.');
+        console.error("Fallback translation error:", fallbackError);
+        setTranslatedText(
+          "Translation service temporarily unavailable. Please try again.",
+        );
       }
     } finally {
       setIsTranslating(false);
