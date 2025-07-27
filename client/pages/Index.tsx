@@ -175,7 +175,7 @@ export default function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 flex flex-col justify-start items-end pl-4 pr-0 py-4">
       {/* Demo Twitter-like Background */}
       <div className="max-w-2xl mx-auto bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 rounded-2xl shadow-xl p-6 mb-4">
         <div className="flex items-center space-x-3 mb-4">
