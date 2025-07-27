@@ -18,6 +18,7 @@ import {
   ArrowRightLeft,
   ChevronDown,
   ChevronUp,
+  X,
 } from "lucide-react";
 
 const languages = [
@@ -32,7 +33,7 @@ const languages = [
   { code: "ko", name: "Korean", flag: "🇰🇷" },
   { code: "zh", name: "Chinese (Simplified)", flag: "🇨🇳" },
   { code: "ar", name: "Arabic", flag: "🇸🇦" },
-  { code: "hi", name: "Hindi", flag: "🇮🇳" },
+  { code: "hi", name: "Hindi", flag: "🇮��" },
   { code: "nl", name: "Dutch", flag: "🇳🇱" },
   { code: "tr", name: "Turkish", flag: "🇹🇷" },
   { code: "pl", name: "Polish", flag: "🇵🇱" },
