@@ -197,6 +197,50 @@ export default function Index() {
   const charCount = sourceText.length;
   const isOverLimit = charCount > 280;
 
+  if (!isWidgetVisible) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 flex flex-col justify-start items-end pl-4 pr-0 py-4">
+        {/* Demo Twitter-like Background */}
+        <div className="max-w-2xl mx-auto bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 rounded-2xl shadow-xl p-6 mb-4">
+          <div className="flex items-center space-x-3 mb-4">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full ring-2 ring-blue-400/20"></div>
+            <div>
+              <div className="font-semibold text-white">Twitter User</div>
+              <div className="text-slate-400 text-sm">@twitteruser</div>
+            </div>
+          </div>
+          <p className="text-slate-200 mb-4 leading-relaxed">
+            This is a sample tweet that you might want to translate. The
+            translation widget floats on top and can be moved around the screen.
+          </p>
+          <div className="flex space-x-6 text-slate-400 text-sm">
+            <span className="hover:text-slate-300 cursor-pointer transition-colors">
+              Reply
+            </span>
+            <span className="hover:text-slate-300 cursor-pointer transition-colors">
+              Retweet
+            </span>
+            <span className="hover:text-slate-300 cursor-pointer transition-colors">
+              Like
+            </span>
+          </div>
+        </div>
+
+        {/* Show button to restore widget */}
+        <div className="max-w-2xl mx-auto bg-gradient-to-br from-violet-500/10 to-indigo-500/10 backdrop-blur-sm border border-violet-400/20 rounded-2xl p-6 mt-4">
+          <div className="flex items-center justify-center">
+            <Button
+              onClick={() => setIsWidgetVisible(true)}
+              className="bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-700 hover:via-purple-700 hover:to-indigo-700 text-white font-medium shadow-lg shadow-violet-500/25 transition-all duration-200 border-0"
+            >
+              Show LiveTranslate Widget
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (isMinimized) {
     return (
       <div
