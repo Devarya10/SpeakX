@@ -314,7 +314,7 @@ export default function Index() {
         }}
       >
         <Card
-          className={`${isMobile ? "w-full" : "w-85"} bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-black/25 transition-all duration-300 relative group`}
+          className={`${isMobile ? "w-full" : "w-85"} bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-black/25 transition-all duration-300`}
         >
           {/* Header */}
           <CardHeader
