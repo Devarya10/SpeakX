@@ -369,6 +369,14 @@ export default function Index() {
                 >
                   <Minimize2 className="w-4 h-4" />
                 </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="w-8 h-8 p-0 text-slate-400 hover:text-red-400 hover:bg-red-900/20 rounded-lg transition-all"
+                  onClick={handleCancel}
+                >
+                  <X className="w-4 h-4" />
+                </Button>
               </div>
             </div>
           </CardHeader>
