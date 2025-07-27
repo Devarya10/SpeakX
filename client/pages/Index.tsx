@@ -381,6 +381,18 @@ export default function Index() {
             </div>
           </CardHeader>
 
+          {/* Overlay Cancel Button */}
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
+            <Button
+              variant="destructive"
+              size="sm"
+              className="w-8 h-8 p-0 bg-red-600/90 hover:bg-red-700 text-white rounded-full shadow-lg"
+              onClick={handleCancel}
+            >
+              <X className="w-4 h-4" />
+            </Button>
+          </div>
+
           {isExpanded && (
             <CardContent className="pt-4 space-y-4">
               {/* Language Selection */}
