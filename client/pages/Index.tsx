@@ -128,6 +128,15 @@ export default function Index() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleCancel = () => {
+    setIsWidgetVisible(false);
+    // Reset widget state
+    setSourceText("");
+    setTranslatedText("");
+    setIsMinimized(false);
+    setIsExpanded(true);
+  };
+
   const handleHeaderMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault();
     if (widgetRef.current) {
